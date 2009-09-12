@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Rule Breaker</title>
+<link type="text/css" href="css/smoothness/jquery-ui-1.7.2.custom.css" rel="stylesheet" />
+<link type="text/css" href="css/style.css" rel="stylesheet" />
+<script type="text/javascript" src="js/jquery-1.3.2.min.js" ></script>
+<script type="text/javascript" src="js/jquery-ui-1.7.2.custom.min.js" ></script>
+<script type="text/javascript" src="js/contextfree.js" ></script>
+<script type="text/javascript" src="js/json.js" ></script>
+<script type="text/javascript" src="js/script.js" ></script>
+</head>
+<body>
+<div id="canvas" ></div>
+<ul id="toolbar" >
+	<li><span>File</span>
+		<ul>
+			<li onclick="newFile();" ><a href="#" >New</a></li>
+			<li onclick="saveFile();" ><a href="#" >Save</a></li>
+			<li onclick="$('#openfile').dialog('open');" ><a href="#" >Open</a></li>
+		</ul>
+	</li>
+
+	<li><span>Rule</span>
+		<ul>
+			<ul id="rulelist" >
+				<li class="rule selected" ><a href="#" >main</a></li>
+			</ul>
+			<li onclick="$('#newrule').dialog('open');" ><a href="#" >Add</a></li>
+			<li onclick="deleteRule();" ><a href="#" >Delete</a></li>
+		</ul>
+	</li>
+
+	<li><span>Shape</span>
+		<ul>
+			<li onclick="addShape();" ><a href="#" >Add</a></li>
+			<li onclick="deleteShape();" ><a href="#" >Delete</a></li>
+		</ul>
+	</li>
+	
+	<li onclick="render();" ><a href="#" >Render</a></li>
+</ul>
+<div id="propbar" >
+	<button onclick="pushShape('propbar', 'doc'); pushShape('doc', 'canvas');" id="propsavebutton" >Save Changes</button>
+	<label for="propshape" >Shape: </label>
+	<div onclick="$('#propshape').val('SQUARE');" title="Rectangle" class="ui-state-default ui-corner-all" ><span class="ui-icon ui-icon-rect"/></div>
+	<div onclick="$('#propshape').val('CIRCLE');" title="Circle" class="ui-state-default ui-corner-all" ><span class="ui-icon ui-icon-circ"/></div>
+	<div onclick="$('#propshape').val('TRIANGLE');" title="Triangle" class="ui-state-default ui-corner-all" ><span class="ui-icon ui-icon-tri"/></div>
+	<input id="propshape" value="SQUARE" /><br/>
+	<label for="propx" >X: </label>
+	<input id="propx" value="0" />
+	<label for="propy" >Y: </label>
+	<input id="propy" value="0"	/><br/>
+	<label for="propsize" >Size: </label>
+	<input id="propsize" value="1"	/>
+	<div onclick="toggleSizeLock();" id="sizelock" title="Resize height and width together" class="ui-state-default ui-corner-all" ><span class="ui-icon ui-icon-locked"/></div>
+	<input id="propsize2" disabled	/><br/>
+	<label for="proprot" >Rotation: </label>
+	<input id="proprot" value="0"	/>
+	<canvas onmousedown="propRotStartDrag(event);" id="proprot-draggable" width="30" height="30" ></canvas><br/>
+	<label>Color: </label>
+	<a href="#" onclick="$('#propcolorselector').dialog('open');" >Choose...</a><br/>
+	<label for="propz" >Z: </label>
+	<input id="propz" value="0"	/>
+</div>
+<div id="propcolorselector" title="Color Selector" class="dialog" >
+	<label for="prophue" >Hue: </label>
+	<input id="prophue" value="0"	/><br/>
+	<label for="propbrightness" >Brightness: </label>
+	<input id="propbrightness" value="0"	/><br/>
+	<label for="propsat" >Saturation: </label>
+	<input id="propsat" value="0"	/>
+</div>
+<div id="newrule" title="New Rule" class="dialog" >
+	<label for="newrulename" >Name: </label>
+	<input id="newrulename"	/><br/>
+	<label for="newruleweight" >Weight: </label>
+	<input id="newruleweight" value="1"	/><br/>
+	<button onclick="addRule($('#newrulename').val(), parseFloat($('#newruleweight').val())); $('#newrule').dialog('close');" >Create</button>
+</div>
+<div id="openfile" title="Open File" class="dialog" >
+	<textarea id="openfiletext" >Paste your document here.</textarea><br/>
+	<button onclick="openFile($('#openfiletext').val()); $('#openfile').dialog('close');" >Create</button>
+</div>
+</body>
+</html>

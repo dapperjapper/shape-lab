@@ -1,0 +1,241 @@
+/* MISC */
+
+html, body {
+	margin: 0;
+	padding: 0;
+	font-family: Helvetica;
+	height: 100%;
+}
+
+#drawcanvas {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+
+
+/* TOOLBAR */
+
+#toolbar {
+	position: absolute;
+	top: 10px;
+	right: 11px;
+}
+
+#toolbar, #toolbar ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	background-color: lightgray;
+}
+
+#toolbar a, #toolbar span {
+	color: black;
+	text-decoration: none;
+	display: block;
+	width: 90px;
+	padding: 10px;
+}
+
+#toolbar li {
+	float: left;
+	width: 100px;
+	text-align: center;
+}
+
+#toolbar li ul {
+	position: absolute;
+	width: 100px;
+	left: -999em;
+}
+
+#toolbar li:hover ul {
+	left: auto;
+}
+
+#toolbar li ul li.rule.selected {
+	background-color: #e5e5e5;
+}
+
+#rulelist {
+	position: static !important;
+}
+
+#rulelist li.rule:last-child {
+	border-bottom: 1px dashed black;
+}
+
+#toolbar li:hover {
+	background-color: gray;
+}
+
+/*
+#toolbar li {
+	display: inline;
+}
+
+#toolbar {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
+#toolbar, #toolbar ul.menu {
+	border: 1px solid black;
+	padding: 0;
+	margin: 0;
+	background-color: #ccc;
+	background: url(smoothness/images/ui-bg_highlight-soft_75_cccccc_1x100.png) scroll 0 50%;
+	z-index: 100;
+	list-style: none;
+}
+
+#toolbar li.menu:hover ul.menu {
+	display: block;
+}
+
+#toolbar ul.menu{
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	line-height: 1.5em;
+	display: none;
+}
+
+#toolbar ul.menu li {
+	display: block;
+}
+
+.text-button {
+	cursor: pointer;
+	display: inline;
+	vertical-align: bottom;
+}
+
+.text-button div {
+	margin: 2px 0 2px 2px;
+	vertical-align: baseline;
+}
+
+.toolbar-label {
+	bottom: 3px;
+	left: 4px;
+	font-size: 75%;
+	position: relative;
+	margin-right: 10px;
+	color: gray;
+}*/
+
+/*
+#deleterule {
+	margin-left: 20px;
+}
+
+#addshape {
+	margin-left: 20px;
+}
+
+#renderbutton {
+	margin-left: 20px;
+}*/
+
+/* PROPBAR */
+
+#propbar {
+	background-image: url(smoothness/images/ui-bg_highlight-soft_75_cccccc_1x100.png);
+	background-repeat: repeat-x;
+	border-top: 2px solid black;
+	width: 100%;
+	height: 120px;
+	background-color: #ccc;
+	overflow: auto;
+	position: relative;
+	top: -122px;
+	z-index: 100;
+	display: none;
+}
+
+.ui-icon-rect {
+	background-position: 0px -240px;
+}
+
+.ui-icon-tri {
+	background-position: -16px -240px;
+}
+
+.ui-icon-circ {
+	background-position: -32px -240px;
+}
+
+#propbar label, #propbar input {
+	margin: 5px;
+	padding: 5px;
+	font-size: 75%;
+}
+
+#proprot-draggable {
+	vertical-align: middle;
+}
+
+#propsavebutton {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}
+
+.ui-state-default {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+/* CANVAS */
+
+#canvas {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+}
+
+.ui-resizable-se {
+	z-index: 0 !important;
+}
+
+#canvas div.ui-selecting {
+	border: 1px dotted black;
+}
+
+#canvas div.ui-selected {
+	border: 1px dashed black;
+}
+
+.shape {
+	position: absolute;
+}
+
+.shape.rule {
+	color: gray;
+	text-align: center;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.shape.CIRCLE {
+	-moz-border-radius: 100%;
+	-webkit-border-radius: 100%;
+}
+
+.shape.TRIANGLE div.triangle-left {
+	border-right: solid;
+	border-top: solid transparent;
+	width: 0;
+	height: 0;
+	position: absolute;
+}
+
+.shape.TRIANGLE div.triangle-right {
+	border-left: solid;
+	border-top: solid transparent;
+	width: 0;
+	height: 0;
+	position: absolute;
+}
