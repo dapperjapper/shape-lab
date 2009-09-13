@@ -587,4 +587,11 @@ $(function(){
 	window.onresize = function() {
 		pushRule('doc', 'canvas');
 	};
+	
+	window.onkeydown = function(event) {
+		console.log(event);
+		if (event.keyCode == 8) {
+			deleteShape();
+		}
+	}
 });
