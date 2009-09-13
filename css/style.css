@@ -31,6 +31,8 @@ html, body {
 	margin: 0;
 	list-style: none;
 	background-color: lightgray;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
 }
 
 #toolbar a, #toolbar span {
@@ -45,6 +47,8 @@ html, body {
 	float: left;
 	width: 100px;
 	text-align: center;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
 }
 
 #toolbar li ul {
