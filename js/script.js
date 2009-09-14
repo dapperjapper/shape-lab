@@ -1,47 +1,3 @@
-/*function createCanvas(){
-	var c = document.createElement( "canvas" );
-	c.id = "canvas";
-	c.width = "1000";
-	c.height = "1000";
-
-	document.getElementById("canvasHolder").appendChild( c );
-}
-
-function removeCanvas(){
-	var c = document.getElementById("canvas");
-	if( c ){
-		document.getElementById("canvasHolder").removeChild( c );
-	}
-}
-
-function render( el ){
-	removeCanvas();
-	createCanvas();
-
-	var t = new Tokenizer();
-	var tokens = t.tokenize( el.id );
-
-	var c = new Compiler();
-	var compiled = c.compile( tokens );
-
-	// compiled like:
-	// { startshape: 'rule1',
-	//	 rule1: [
-	//		 { weight: 0.1,
-	//			 draw: [
-	//				 { shape: 'rule1',
-	//					 r: 1,
-	//					 s: 0.9,
-	//					 b: 0.1
-	//				 },
-	//				 { shape: 'CIRCLE' }
-	//			 ]
-	//		 }
-	//	 ]
-	// }
-	Renderer.render( compiled, "canvas" );
-}*/
-
 //VARIABLES//
 var canvasToDocRatio = 0.0035;
 var doc;
@@ -61,17 +17,31 @@ function uploadFile(name, author) {
 		alert('You must fill in all fields!');
 		return null;
 	}
+	
 	$('#uploadfileprogress').html('<div style="text-align: center;" ><img src="css/ajax-loader.gif" /></div>');
 	$('#uploadfileprogress').dialog('open');
-	$.post('php/savefile.php', {'name': name, 'author': author, 'data': JSON.stringify(doc)}, function(data) {
-		savedId = parseInt(data);
-		if (savedId) {
-			savedUrl = location.protocol + '//' + location.host + location.pathname + '#' + savedId;
-			$('#uploadfileprogress').html('Upload successful! You can view it at the gallery or share this url: ' + savedUrl);
-		} else {
-			$('#uploadfileprogress').html('There was a problem! Here is the error: ' + data);
-		}
-	});
+
+	//Get a thumbnail before uploading (first wait a bit for the render to work)
+	render();
+	setTimeout(function() {
+		var thumb = document.createElement("canvas");
+		var size = 150;
+		var drawcanvas = document.getElementById('drawcanvas');
+		thumb.width = size;
+		thumb.height = size;
+		ctx = thumb.getContext("2d");
+		ctx.drawImage(drawcanvas, 0, (size/2)-((size*(drawcanvas.height/drawcanvas.width))/2), size, size*(drawcanvas.height/drawcanvas.width));
+		
+		$.post('php/savefile.php', {'name': name, 'author': author, 'data': JSON.stringify(doc), 'thumb': thumb.toDataURL()}, function(data) {
+			savedId = parseInt(data);
+			if (savedId) {
+				savedUrl = location.protocol + '//' + location.host + location.pathname + '#' + savedId;
+				$('#uploadfileprogress').html('Upload successful! You can view it at the gallery or share this url: ' + savedUrl);
+			} else {
+				$('#uploadfileprogress').html('There was a problem! Here is the error: ' + data);
+			}
+		});
+	}, 1000);
 }
 
 function openFile(data) {
@@ -262,49 +232,49 @@ function realignTriangle(shape, fromShape) {
 
 //color conversions thanks to http://mjijackson.com/2008/02/rgb-to-hsl-and-rgb-to-hsv-color-model-conversion-algorithms-in-javascript
 function rgbToHsl(r, g, b){
-    r /= 255, g /= 255, b /= 255;
-    var max = Math.max(r, g, b), min = Math.min(r, g, b);
-    var h, s, l = (max + min) / 2;
+		r /= 255, g /= 255, b /= 255;
+		var max = Math.max(r, g, b), min = Math.min(r, g, b);
+		var h, s, l = (max + min) / 2;
 
-    if(max == min){
-        h = s = 0; // achromatic
-    }else{
-        var d = max - min;
-        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-        switch(max){
-            case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-            case g: h = (b - r) / d + 2; break;
-            case b: h = (r - g) / d + 4; break;
-        }
-        h /= 6;
-    }
+		if(max == min){
+				h = s = 0; // achromatic
+		}else{
+				var d = max - min;
+				s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+				switch(max){
+						case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+						case g: h = (b - r) / d + 2; break;
+						case b: h = (r - g) / d + 4; break;
+				}
+				h /= 6;
+		}
 
-    return [h, s, l];
+		return [h, s, l];
 }
 
 function hslToRgb(h, s, l){
-    var r, g, b;
+		var r, g, b;
 
-    if(s == 0){
-        r = g = b = l; // achromatic
-    }else{
-        function hue2rgb(p, q, t){
-            if(t < 0) t += 1;
-            if(t > 1) t -= 1;
-            if(t < 1/6) return p + (q - p) * 6 * t;
-            if(t < 1/2) return q;
-            if(t < 2/3) return p + (q - p) * (2/3 - t) * 6;
-            return p;
-        }
+		if(s == 0){
+				r = g = b = l; // achromatic
+		}else{
+				function hue2rgb(p, q, t){
+						if(t < 0) t += 1;
+						if(t > 1) t -= 1;
+						if(t < 1/6) return p + (q - p) * 6 * t;
+						if(t < 1/2) return q;
+						if(t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+						return p;
+				}
 
-        var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
-        var p = 2 * l - q;
-        r = hue2rgb(p, q, h + 1/3);
-        g = hue2rgb(p, q, h);
-        b = hue2rgb(p, q, h - 1/3);
-    }
+				var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+				var p = 2 * l - q;
+				r = hue2rgb(p, q, h + 1/3);
+				g = hue2rgb(p, q, h);
+				b = hue2rgb(p, q, h - 1/3);
+		}
 
-    return [r * 255, g * 255, b * 255];
+		return [r * 255, g * 255, b * 255];
 }
 
 function cleanupPropbar() {
@@ -376,11 +346,11 @@ function deleteShape(id) {
 		for (var i = 0; i < id.length; i++) {
 			deleteShape(id[i]);
 			for (var x = 0; x < id.length; x++) {
-	  		//shift down array items who were moved by the deleting
+				//shift down array items who were moved by the deleting
 				if (id[x] > id[i]) {
 					id[x]--;
 				}
-	  	}
+			}
 		}
 	} else {
 		selectedRule.draw.splice(id, 1);
