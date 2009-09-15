@@ -377,6 +377,7 @@ function selectRule(name, id) {
 	$('#rulelist li.rule').removeClass('selected');
 	$('#rulelist li.rule[rulename=' + name + '][ruleid=' + id + ']').addClass('selected');
 	pushRule('doc', 'canvas');
+	selectShape();
 }
 
 function addRule(name, weight) {
