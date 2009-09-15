@@ -44,6 +44,16 @@ function uploadFile(name, author) {
 	}, 1000);
 }
 
+function openCFFile(data) {
+	var t = new Tokenizer();
+	var tokens = t.tokenize('opencffiletext');
+
+	var c = new Compiler();
+	var compiled = c.compile(tokens);
+	
+	openFile(compiled);
+}
+
 function openFile(data) {
 	doc = data;
 	refreshRuleSelector();
