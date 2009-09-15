@@ -1,4 +1,22 @@
-/* MISC */
+/*********** HOME & GALLERY ********/
+
+#page_centering {
+	width: 900px;
+	margin: 0 auto;
+}
+
+#header {
+	background: url(images/logo.png) no-repeat left;
+	height: 144px;
+}
+
+.rule {
+	width: 850px;
+	height: 2px;
+	background-color: #C9C4C2;
+}
+
+/************ EDITOR ***************/
 
 html, body {
 	margin: 0;
