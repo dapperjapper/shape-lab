@@ -94,7 +94,6 @@
 			echo "<a href='{$_SERVER['PHP_SELF']}?pagenum=$last'>Last->></a>";
 		}
 	}
-	var_dump($db->num_queries);
 ?>
 </body>
 </html>
