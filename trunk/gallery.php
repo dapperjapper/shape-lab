@@ -34,7 +34,7 @@
 	if ($search!='') {
 		$query .= " WHERE name LIKE '%$search%' OR author LIKE '%$search%'";
 	}
-	$query .= " ORDER BY $sortby";
+	$query .= " ORDER BY $sortby DESC";
 	
 	//Get data
 	$data = $db->get_results($query . ";");
