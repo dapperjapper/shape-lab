@@ -20,6 +20,7 @@
 			<li onclick="saveFile();" ><a href="#" >Save</a></li>
 			<li onclick="$('#uploadfile').dialog('open');" ><a href="#" >Upload</a></li>
 			<li onclick="$('#openfile').dialog('open');" ><a href="#" >Open</a></li>
+			<li onclick="$('#opencffile').dialog('open');" ><a href="#" >Open CF</a></li>
 		</ul>
 	</li>
 
@@ -83,6 +84,10 @@
 <div id="openfile" title="Open File" class="dialog" >
 	<textarea id="openfiletext" >Paste your document here.</textarea><br/>
 	<button onclick="openFile(JSON.parse($('#openfiletext').val())); $('#openfile').dialog('close');" >Open</button>
+</div>
+<div id="opencffile" title="Open CF File" class="dialog" >
+	<textarea id="opencffiletext" >Paste your contextfree code here.</textarea><br/>
+	<button onclick="openCFFile($('#opencffiletext').val()); $('#openfile').dialog('close');" >Open</button>
 </div>
 <div id="savefile" title="Save File" class="dialog" >
 	<p>Here is your file. Paste it somewhere safe. ;)</p>
