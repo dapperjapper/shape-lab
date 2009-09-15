@@ -7,7 +7,14 @@
 </head>
 <body>
 	<div id="page_centering">
-		<p>test</p>
+		<div id="header">	
+		</div>
+		<div class="rule"></div>
+	<div id="content">content</div>
+	<div id="footer">
+		<div class="rule"></div>
+        footer
+	</div>
 	</div>
 </body>
 </html>
