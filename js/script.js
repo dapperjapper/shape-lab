@@ -569,7 +569,7 @@ $(function(){
 	};
 	
 	window.onkeydown = function(event) {
-		if (event.keyCode == 8) {
+		if (event.keyCode == 46 && selectedShapeId) {
 			deleteShape();
 		}
 	}
