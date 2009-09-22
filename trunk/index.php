@@ -7,7 +7,12 @@
 </head>
 <body>
 	<div id="page_centering">
-		<div id="header">	
+		<div id="header">
+			<ul id="nav_primary">
+				<li>Home</li>
+				<li>Create</li>
+				<li>Gallery</li>
+			</ul>	
 		</div>
 		<div class="rule"></div>
 	<div id="content">content</div>
