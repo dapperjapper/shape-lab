@@ -15,7 +15,7 @@
 	// User Settings -- CHANGE HERE
 
 	define("EZSQL_DB_USER", "root");			// <-- mysql db user
-	define("EZSQL_DB_PASSWORD", "jasper11");		// <-- mysql db password
+	define("EZSQL_DB_PASSWORD", "blah");		// <-- mysql db password
 	define("EZSQL_DB_NAME", "shapelab");		// <-- mysql db pname
 	define("EZSQL_DB_HOST", "localhost");	// <-- mysql server host
 
