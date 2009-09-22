@@ -14,6 +14,25 @@
 	width: 850px;
 	height: 2px;
 	background-color: #C9C4C2;
+	margin: 0 auto;
+}
+
+#nav_primary {
+	float: right;
+	margin: 0;
+	padding: 0;
+}
+
+#nav_primary li {
+	list-style-type: none;
+	background: #666;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	height: 15px;
+	width: 60px;
+	padding: 10px;
+	margin: 3px;
+	text-align: center;
 }
 
 /************ EDITOR ***************/
