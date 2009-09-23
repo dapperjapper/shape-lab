@@ -474,7 +474,8 @@ function reconfigureShapes() {
 			selectShape(parseInt(event.target.id.substr(5)));
 			pushShape('canvas', 'doc');
 			pushShape('doc', 'propbar');
-		}
+		},
+		handles: 'all'
 	});
 }
 
