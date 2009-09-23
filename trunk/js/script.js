@@ -89,12 +89,16 @@ function render() {
 //get the rule from the source, and put the shapes in the destination
 function pushRule(from, to, rule) {
 	//both from and to can be one of: doc, canvas
-	rule = rule || selectedRule;
-	canvas = $('#canvas');
-	canvas.empty();
-	for (var i in selectedRule.draw) {
-		canvas.append(canvasShapeHTML(shapeDefaults, i));
-		pushShape('doc', 'canvas', i);
+	if (from == 'doc' && to == 'canvas') {
+  	rule = rule || selectedRule;
+  	canvas = $('#canvas');
+  	canvas.empty();
+  	for (var i in selectedRule.draw) {
+  		canvas.append(canvasShapeHTML(shapeDefaults, i));
+  		pushShape('doc', 'canvas', i);
+  	}
+  } else {
+		//TODO
 	}
 }
 
