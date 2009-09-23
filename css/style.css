@@ -190,8 +190,8 @@ html, body {
 .shape.rule {
 	color: gray;
 	text-align: center;
-	display: table-cell;
-	vertical-align: middle;
+	border: 1px dashed gray;
+	background-color: white !important;
 }
 
 .shape.CIRCLE {
