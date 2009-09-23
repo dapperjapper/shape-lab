@@ -3,6 +3,7 @@ var canvasToDocRatio = 0.0035;
 var doc;
 var shapeDefaults = {shape: 'SQUARE', x: 0, y: 0, z: 0, s: 1, r: 0, h: 0, b: 0, sat: 0};
 var selectedRule;
+var selectedRuleName;
 var selectedShapeId;
 var toSelectShapeIds;
 
@@ -77,6 +78,8 @@ function createDrawCanvas() {
 
 function render() {
 	createDrawCanvas();
+	
+	doc.startshape = selectedRuleName;
 	
 	canvas = document.getElementById('drawcanvas');
 	ctx = canvas.getContext('2d');
@@ -378,6 +381,7 @@ function selectRule(name, id) {
 		id = $('#rulelist li.rule:first-child').data('ruleid');
 	}
 	selectedRule = doc[name][id];
+	selectedRuleName = name;
 	$('#rulelist li.rule').removeClass('selected');
 	$('#rulelist li.rule[rulename=' + name + '][ruleid=' + id + ']').addClass('selected');
 	pushRule('doc', 'canvas');
