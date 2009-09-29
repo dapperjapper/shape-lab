@@ -7,17 +7,10 @@
 </head>
 <body>
 	<div id="page_centering">
-		<div id="header">
-			<ul id="nav_primary">
-				<li><a href="index.php">Home</a></li>
-				<li><a href="editor.html">Create</a></li>
-				<li><a href="gallery.php">Gallery</a></li>
-			</ul>	
-		</div>
-		<div class="rule"></div>
+    <?php include('header.php'); ?>
 	<div id="content">content</div>
 	<div id="footer">
-		<div class="rule"></div>
+		<div class="hrule"></div>
         footer
 	</div>
 	</div>
