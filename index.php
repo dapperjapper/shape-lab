@@ -9,9 +9,9 @@
 	<div id="page_centering">
 		<div id="header">
 			<ul id="nav_primary">
-				<li>Home</li>
-				<li>Create</li>
-				<li>Gallery</li>
+				<li><a href="index.php">Home</a></li>
+				<li><a href="editor.html">Create</a></li>
+				<li><a href="gallery.php">Gallery</a></li>
 			</ul>	
 		</div>
 		<div class="rule"></div>
