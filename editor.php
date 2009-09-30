@@ -12,15 +12,16 @@
 <script type="text/javascript" src="js/script.js" ></script>
 </head>
 <body>
+<?php include('header.php'); ?>
 <div id="canvas" ></div>
 <ul id="toolbar" >
 	<li><span>File</span>
 		<ul>
-			<li onclick="newFile();" ><a href="#" >New</a></li>
-			<li onclick="saveFile();" ><a href="#" >Save</a></li>
-			<li onclick="$('#uploadfile').dialog('open');" ><a href="#" >Upload</a></li>
-			<li onclick="$('#openfile').dialog('open');" ><a href="#" >Open</a></li>
-			<li onclick="$('#opencffile').dialog('open');" ><a href="#" >Open CF</a></li>
+			<li onClick="newFile();" ><a href="#" >New</a></li>
+			<li onClick="saveFile();" ><a href="#" >Save</a></li>
+			<li onClick="$('#uploadfile').dialog('open');" ><a href="#" >Upload</a></li>
+			<li onClick="$('#openfile').dialog('open');" ><a href="#" >Open</a></li>
+			<li onClick="$('#opencffile').dialog('open');" ><a href="#" >Open CF</a></li>
 		</ul>
 	</li>
 
@@ -29,26 +30,26 @@
 			<ul id="rulelist" >
 				<li class="rule selected" ><a href="#" >main</a></li>
 			</ul>
-			<li onclick="$('#newrule').dialog('open');" ><a href="#" >Add</a></li>
-			<li onclick="deleteRule();" ><a href="#" >Delete</a></li>
+			<li onClick="$('#newrule').dialog('open');" ><a href="#" >Add</a></li>
+			<li onClick="deleteRule();" ><a href="#" >Delete</a></li>
 		</ul>
 	</li>
 
 	<li><span>Shape</span>
 		<ul>
-			<li onclick="addShape();" ><a href="#" >Add</a></li>
-			<li onclick="deleteShape();" ><a href="#" >Delete</a></li>
+			<li onClick="addShape();" ><a href="#" >Add</a></li>
+			<li onClick="deleteShape();" ><a href="#" >Delete</a></li>
 		</ul>
 	</li>
 	
-	<li onclick="render();" ><a href="#" >Render</a></li>
+	<li onClick="render();" ><a href="#" >Render</a></li>
 </ul>
 <div id="propbar" >
-	<button onclick="pushShape('propbar', 'doc'); pushShape('doc', 'canvas');" id="propsavebutton" >Save Changes</button>
+	<button onClick="pushShape('propbar', 'doc'); pushShape('doc', 'canvas');" id="propsavebutton" >Save Changes</button>
 	<label for="propshape" >Shape: </label>
-	<div onclick="$('#propshape').val('SQUARE');" title="Rectangle" class="ui-state-default ui-corner-all" ><span class="ui-icon ui-icon-rect"/></div>
-	<div onclick="$('#propshape').val('CIRCLE');" title="Circle" class="ui-state-default ui-corner-all" ><span class="ui-icon ui-icon-circ"/></div>
-	<div onclick="$('#propshape').val('TRIANGLE');" title="Triangle" class="ui-state-default ui-corner-all" ><span class="ui-icon ui-icon-tri"/></div>
+	<div onClick="$('#propshape').val('SQUARE');" title="Rectangle" class="ui-state-default ui-corner-all" ><span class="ui-icon ui-icon-rect"/></div>
+	<div onClick="$('#propshape').val('CIRCLE');" title="Circle" class="ui-state-default ui-corner-all" ><span class="ui-icon ui-icon-circ"/></div>
+	<div onClick="$('#propshape').val('TRIANGLE');" title="Triangle" class="ui-state-default ui-corner-all" ><span class="ui-icon ui-icon-tri"/></div>
 	<input id="propshape" value="SQUARE" /><br/>
 	<label for="propx" >X: </label>
 	<input id="propx" value="0" />
@@ -56,13 +57,13 @@
 	<input id="propy" value="0"	/><br/>
 	<label for="propsize" >Size: </label>
 	<input id="propsize" value="1"	/>
-	<div onclick="toggleSizeLock();" id="sizelock" title="Resize height and width together" class="ui-state-default ui-corner-all" ><span class="ui-icon ui-icon-locked"/></div>
+	<div onClick="toggleSizeLock();" id="sizelock" title="Resize height and width together" class="ui-state-default ui-corner-all" ><span class="ui-icon ui-icon-locked"/></div>
 	<input id="propsize2" disabled	/><br/>
 	<label for="proprot" >Rotation: </label>
 	<input id="proprot" value="0"	/>
 	<canvas onmousedown="propRotStartDrag(event);" id="proprot-draggable" width="30" height="30" ></canvas><br/>
 	<label>Color: </label>
-	<a href="#" onclick="$('#propcolorselector').dialog('open');" >Choose...</a><br/>
+	<a href="#" onClick="$('#propcolorselector').dialog('open');" >Choose...</a><br/>
 	<label for="propz" >Z: </label>
 	<input id="propz" value="0"	/>
 </div>
@@ -79,15 +80,15 @@
 	<input id="newrulename"	/><br/>
 	<label for="newruleweight" >Weight: </label>
 	<input id="newruleweight" value="1"	/><br/>
-	<button onclick="addRule($('#newrulename').val(), parseFloat($('#newruleweight').val())); $('#newrule').dialog('close');" >Create</button>
+	<button onClick="addRule($('#newrulename').val(), parseFloat($('#newruleweight').val())); $('#newrule').dialog('close');" >Create</button>
 </div>
 <div id="openfile" title="Open File" class="dialog" >
 	<textarea id="openfiletext" >Paste your document here.</textarea><br/>
-	<button onclick="openFile(JSON.parse($('#openfiletext').val())); $('#openfile').dialog('close');" >Open</button>
+	<button onClick="openFile(JSON.parse($('#openfiletext').val())); $('#openfile').dialog('close');" >Open</button>
 </div>
 <div id="opencffile" title="Open CF File" class="dialog" >
 	<textarea id="opencffiletext" >Paste your contextfree code here.</textarea><br/>
-	<button onclick="openCFFile($('#opencffiletext').val()); $('#openfile').dialog('close');" >Open</button>
+	<button onClick="openCFFile($('#opencffiletext').val()); $('#openfile').dialog('close');" >Open</button>
 </div>
 <div id="savefile" title="Save File" class="dialog" >
 	<p>Here is your file. Paste it somewhere safe. ;)</p>
@@ -98,8 +99,9 @@
 	<input id="uploadname"	/><br/>
 	<label for="uploadauthor" >Your name: </label>
 	<input id="uploadauthor" /><br/>
-	<button onclick="uploadFile($('#uploadname').val(), $('#uploadauthor').val()); $('#uploadfile').dialog('close');" >Upload to Gallery</button>
+	<button onClick="uploadFile($('#uploadname').val(), $('#uploadauthor').val()); $('#uploadfile').dialog('close');" >Upload to Gallery</button>
 </div>
 <div id="uploadfileprogress" title="Uploading..." class="dialog" ></div>
+<?php include('footer.php'); ?>
 </body>
 </html>
