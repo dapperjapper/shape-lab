@@ -5,4 +5,3 @@
 				<li><a href="gallery.php">Gallery</a></li>
 			</ul>	
 		</div>
-		<div class="hrule"></div>

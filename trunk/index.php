@@ -6,13 +6,9 @@
 <link type="text/css" href="css/style.css" rel="stylesheet" />
 </head>
 <body>
-	<div id="page_centering">
     <?php include('header.php'); ?>
+    <div class="hrule"></div>
 	<div id="content">content</div>
-	<div id="footer">
-		<div class="hrule"></div>
-        footer
-	</div>
-	</div>
+    <?php include('footer.php'); ?>
 </body>
 </html>

@@ -3,6 +3,8 @@
 <head>
 </head>
 <body>
+<?php include('header.php'); ?>
+<div class="hrule"></div>
 <?php
 	include_once "php/ez_sql.php";
 	
@@ -95,5 +97,6 @@
 		}
 	}
 ?>
+<?php include('footer.php'); ?>
 </body>
 </html>

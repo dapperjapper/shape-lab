@@ -18,7 +18,9 @@
 }
 
 #nav_primary {
-	float: right;
+	position: absolute;
+	top: 6px;
+	left: 300px;
 	margin: 0;
 	padding: 0;
 }
